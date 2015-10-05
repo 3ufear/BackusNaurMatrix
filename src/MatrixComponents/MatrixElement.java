@@ -1,4 +1,4 @@
-package Matrix;
+package MatrixComponents;
 
 /**
  * Created by phil on 10/5/2015.
@@ -6,7 +6,8 @@ package Matrix;
 public class MatrixElement {
     private String expression;
     private double result;
-    private boolean isComplete;
+    private boolean isComplete = false;
+    private boolean isErrorExpression = false;
 
     public MatrixElement() {
 
@@ -15,10 +16,15 @@ public class MatrixElement {
     public MatrixElement(String expression) {
         this.expression = expression;
         isComplete = false;
+        isErrorExpression = false;
     }
 
     public void setExpression(String expression) {
         this.expression = expression;
+    }
+
+    public String getExpression() {
+        return expression;
     }
 
     public void setComplete() {
@@ -31,6 +37,25 @@ public class MatrixElement {
 
     public void setResult(double result) {
         this.result = result;
+    }
+
+    public Double getResult() {
+        return result;
+    }
+
+    public void setError() {
+        isErrorExpression = true;
+    }
+
+    public boolean isErrorExpression() {
+        return isErrorExpression;
+    }
+
+    public String toSpecialFormat() {
+        if (isComplete)
+         return String.format("%.5f", result);
+        else
+            return "?";
     }
 
     @Override

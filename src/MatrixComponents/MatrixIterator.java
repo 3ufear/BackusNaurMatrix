@@ -1,8 +1,7 @@
-package Matrix;
+package MatrixComponents;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.NoSuchElementException;
 
 /**
  * Created by phil on 10/5/2015.
@@ -33,11 +32,13 @@ public class MatrixIterator implements Iterator {
         } else {
             cur_j++;
         }
+        if (cur_j > width || cur_i > height)
+            throw new NoSuchElementException("There are no more elements in matrix");
         return matrix[cur_i][cur_j];
     }
 
     @Override
     public void remove() {
-
+          throw new RuntimeException("Method not implemented yet");
     }
 }
